@@ -23,9 +23,4 @@ class Log {
         }
         exit();
     }
-
-    public static function login($mail, $mdp) {
-        $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("SELECT * FROM utilisateur WHERE ");
-    }
 }
