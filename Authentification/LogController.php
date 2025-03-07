@@ -4,11 +4,11 @@ require "Config.php";
 require_once "Log.php";
 
 class Controller {
-    public static function base() {
+    public static function base() : void {
         include "Home.php";
     }
 
-    public static function register(){
+    public static function register() : void {
         session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $nom = isset($_POST['nom']) ? trim($_POST['nom']) : "";
@@ -30,7 +30,7 @@ class Controller {
         }
     }
 
-    public static function login() {
+    public static function login() : void {
         session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $mail = isset($_POST['mail']) ? trim($_POST['mail']) : "";

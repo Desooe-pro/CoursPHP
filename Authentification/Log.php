@@ -1,5 +1,7 @@
 <?php
 
+use JetBrains\PhpStorm\NoReturn;
+
 require_once "Config.php";
 
 class Log {
@@ -10,7 +12,7 @@ class Log {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function Register($nom, $prenom, $mail, $mdp) {
+    #[NoReturn] public static function Register($nom, $prenom, $mail, $mdp) : void {
         $hash = password_hash($mdp, PASSWORD_BCRYPT, ['cost' => 10]);
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("INSERT INTO utilisateur (nom, prenom, email, mdp) VALUES (?, ?, ?, ?)");

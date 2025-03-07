@@ -8,10 +8,10 @@
 
 class Database {
     // Propriétés privées - instance unique de la connexion
-    private static $instance = null;
+    private static ?Database $instance = null;
 
     // Pour stocker l'objet $pdo
-    private $pdo;
+    private PDO $pdo;
 
     // Constructeur privé (Il ne peut être appelé qu'une seule fois)
     private function __construct() {
@@ -29,14 +29,14 @@ class Database {
         }
     }
 
-    public static function getInstance() {
+    public static function getInstance() : ?Database {
         if (self::$instance === null){
             self::$instance = new Database();
         }
         return self::$instance;
     }
 
-    public function getConnection() {
+    public function getConnection() : PDO {
         // Retourne l'objet PDO. Pourquoi ? Pour pouvoir faire des requêtes
         return $this -> pdo;
     }

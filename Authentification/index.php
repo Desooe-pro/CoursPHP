@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$action = isset($_GET['action']) ? $_GET['action'] : 'base';
+$action = $_GET['action'] ?? 'base';
 
 if (isset($_SESSION['utilisateur'])){
     $action = "connected";
